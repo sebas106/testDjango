@@ -50,10 +50,11 @@
 					  <div class="input-group-btn">
 					    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Elige ciudad <span class="caret"></span></button>
 					    <ul class="dropdown-menu" role="menu">
-					    	<li><a href="#">Trujullo</a></li>
-					    	<li><a href="#">Lima</a></li>
-					    	<li><a href="#">Chiclayo</a></li>
-					    	<li><a href="#">Cuzco</a></li>
+					    	{% for city in cities %}
+					    		<li><a href="#">{{ city.name }}</a></li>
+					    	{% endfor %}
+					    	
+					    	
 					      </ul>
 					      
 					    </div>
@@ -71,21 +72,15 @@
         						<input type="checkbox"> Todo
         					</label>
         				</div>
-        				<div class="checkbox">
-        					<label for="">
-        						<input type="checkbox"> Criolla
-        					</label>
-        				</div>
-        				<div class="checkbox">
-        					<label for="">
-        						<input type="checkbox"> Marisco
-        					</label>
-        				</div>
-        				<div class="checkbox">
-        					<label for="">
-        						<input type="checkbox"> Chifa
-        					</label>
-        				</div>
+        				{% for category in categories %}
+	        				<div class="checkbox">
+	        					<label for="">
+	        						<input type="checkbox"> {{ category.name }}
+	        					</label>
+	        				</div>
+        				{% endfor %}
+        				
+        				
         			</div>
         			<div class="form-group">
         				<label for="">Formas de pago</label>
@@ -94,52 +89,36 @@
         						<input type="checkbox"> Todo
         					</label>
         				</div>
-        				<div class="checkbox">
-        					<label for="">
-        						<input type="checkbox"> Efectivo
-        					</label>
-        				</div>
-        				<div class="checkbox">
-        					<label for="">
-        						<input type="checkbox"> Visa
-        					</label>
-        				</div>
-        				<div class="checkbox">
-        					<label for="">
-        						<input type="checkbox"> MasterCard
-        					</label>
-        				</div>
+        				{% for payment in payments %}
+	        				<div class="checkbox">
+        						<label for="">
+        							<input type="checkbox"> {{ payment.pay }}
+        						</label>
+        					</div>
+        				{% endfor %}
+        				
+        				
         			</div>
         		</div>
         		<div class="col-sm-9">
         			<div class="list-group">
-        				<a href="" class="list-group-item">
-        					<div class="col-sm-3">
-        						<img src="http://via.placeholder.com/350x250" class="media-object img-rounded img-responsive" alt="">
-        					</div>
-        					<div class="col-sm-6">
-        						<h3>El Mochica</h3>
-        						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        					</div>
-        					<div class="col-sm-3 text-center">
-        						<h2>4 <small>tips</small></h2>
-        						<button type="button" class="btn btn-primary btn-lg btn-block">Ver detalle</button>
-        					</div>
-        				</a>
+        				{% for restaurant, tips in restaurants %}
+	        				<a href="" class="list-group-item">
+	        					<div class="col-sm-3">
+	        						<img src="/media/{{ restaurant.imagen }}" class="media-object img-rounded img-responsive" alt="">
+	        					</div>
+	        					<div class="col-sm-6">
+	        						<h3>{{ restaurant.name }}</h3>
+	        						<p>{{ restaurant.description }}</p>
+	        					</div>
+	        					<div class="col-sm-3 text-center">
+	        						<h2>{{ tips }} <small>tips</small></h2>
+	        						<button type="button" class="btn btn-primary btn-lg btn-block">Ver detalle</button>
+	        					</div>
+	        				</a>
+        				{% endfor %}
 
-        				<a href="" class="list-group-item">
-        					<div class="col-sm-3">
-        						<img src="http://via.placeholder.com/350x250" class="media-object img-rounded img-responsive" alt="">
-        					</div>
-        					<div class="col-sm-6">
-        						<h3>El Mochica</h3>
-        						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed eiusmod tempor incidunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquid ex ea commodi consequat. Quis aute iure reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint obcaecat cupiditat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-        					</div>
-        					<div class="col-sm-3 text-center">
-        						<h2>4 <small>tips</small></h2>
-        						<button type="button" class="btn btn-primary btn-lg btn-block">Ver detalle</button>
-        					</div>
-        				</a>
+        			
         			</div>
         		</div>
         	</div>
